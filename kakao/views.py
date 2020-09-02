@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from . import api
+import json
 
 # Create your views here.
 
 def translate(request):
-    print(type(request.POST))
-    text = request.POST['action']['params']['text']['value']
+    request_json = json.loads(request.body)
+    text = request_json['action']['params']['text']['value']
     return JsonResponse(api.kr_to_en(text))
