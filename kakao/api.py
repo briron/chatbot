@@ -23,7 +23,7 @@ def kr_to_en(korean):
             }
         resp = requests.post(API_URL, headers=headers, data=data)
         resp.raise_for_status()
-        return resp.json()
+        return resp.json()['translated_text'][0][0]
     except Exception as e:
         print(str(e))
         sys.exit(0)
