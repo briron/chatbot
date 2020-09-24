@@ -8,7 +8,7 @@ import json
 
 def translate(request):
     request_json = json.loads(request.body)
-    request_text = request_json['action']['params']['text']['value']
+    request_text = request_json['action']['params']['text']
     response_text = api.kr_to_en(request_text)
     response_dict = bot.simpleText(response_text)
     return JsonResponse(response_dict)
