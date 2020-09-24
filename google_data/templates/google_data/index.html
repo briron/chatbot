@@ -1,0 +1,17 @@
+<html>
+    <form action="{% url 'google_data:visualizeLocation' %}" method="POST" enctype="multipart/form-data" class="form-horizontal" name="location_file"> 
+        {% csrf_token %}
+        <div class="form-group">
+        <label for="name" >File: </label>
+        <div>
+        <input type="file" name="location_file" id="location_file" required="True" class="form-control">
+        </div>                    
+        </div>
+        <div class="form-group">                    
+        <div>
+        <button> <span></span>Upload</button>
+        </div> 
+        </div>
+    </form>
+    {{ text }}
+</html>

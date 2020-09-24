@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'google_data.apps.GoogleDataConfig',
     'kakao.apps.KakaoConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -89,6 +90,10 @@ DATABASES = {
         }
     }
 }
+
+# FILE UPLOAD SETTING
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2621440 * 100
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 * 100
 
 
 # Password validation
