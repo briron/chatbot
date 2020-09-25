@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from . import map
 
 # Create your views here.
 
@@ -11,6 +12,8 @@ def index(request):
 def visualizeLocation(request):
     text = ''
     if request.method == 'POST':
-        f = request.FILES.get('location_file')
-        text = f.read()
+        with request.FILES.get('location_file') as fp:
+            lh = map.LocationDataHandler(fp=fp)
+            service = map.MapService(lh)
+        text = service.visualizeNearestLocation("경찰청")._repr_html_()
     return render(request, 'google_data/index.html', {'text':text})

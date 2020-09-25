@@ -1,4 +1,7 @@
 <html>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'google_data/style.css' %}">
+
     <form action="{% url 'google_data:visualizeLocation' %}" method="POST" enctype="multipart/form-data" class="form-horizontal" name="location_file"> 
         {% csrf_token %}
         <div class="form-group">
@@ -13,5 +16,7 @@
         </div> 
         </div>
     </form>
-    {{ text }}
+    <div class="iframebox">
+        {{ text | safe }}
+    </div>
 </html>
