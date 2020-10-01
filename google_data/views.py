@@ -12,8 +12,9 @@ def index(request):
 def visualizeLocation(request):
     text = ''
     if request.method == 'POST':
+        target = request.POST['target']
         with request.FILES.get('location_file') as fp:
             lh = map.LocationDataHandler(fp=fp)
             service = map.MapService(lh)
-        text = service.visualizeNearestLocation("경찰청")._repr_html_()
+        text = service.visualizeNearestLocation(target)._repr_html_()
     return render(request, 'google_data/index.html', {'text':text})
