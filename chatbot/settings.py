@@ -24,9 +24,9 @@ CONFIG_DIR = path.abspath(path.join(path.dirname(__file__),"../etc"))
 with open(path.join(CONFIG_DIR, 'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+# SECURITY WARNING: don't run with debug turned on in production
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
