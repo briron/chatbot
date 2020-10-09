@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'google_data/style.css' %}">
+
+
+    <title>Google Data Visualization</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="./">Visualization</a>
+
+    </nav>
+      
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    GeoData
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    Application
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    Search Word
+                  </a>
+                </li>
+              </ul>
+      
+            </div>
+          </nav>
+      
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Application</h1>
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">상위N개</button>
+                </div>
+              </div>
+            </div>
+  
+            <form action="{% url 'google_data:visualizeTopCountApp' %}" method="POST" enctype="multipart/form-data" class="form-horizontal" name="activity_file"> 
+                {% csrf_token %}
+                <div class="form-group">
+                    <h3 class="h3">File</h3>
+
+                    <div>
+                        <h5 class="h6">안드로이드 활동내역 업로드 (HTML)</h5>
+                        <input type="file" name="activity_file" id="activity_file" required="True" class="form-control btn btn-sm btn-outline-secondary">
+                    </div>                    
+                </div>
+
+
+                <div class="form-group">
+                
+                    <div>
+                        <h5 class="h6">상위 개수</h5>
+                        <input type="text" name="count" id="count" required="True" class="form-control" placeholder="10">
+                    </div>
+                </div>
+            
+
+                <div class="form-group">                    
+                    <div>
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Upload</button>
+                    </div> 
+                </div>
+            </form>
+        
+
+          </main>
+        </div>
+      </div>
+
+      
+    <div class="iframebox">
+        {{ text | safe }}
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
